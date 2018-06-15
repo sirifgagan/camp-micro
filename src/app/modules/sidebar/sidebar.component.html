@@ -1,0 +1,93 @@
+
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="http://iigs.com" class="simple-text">
+            <div class="logo-img">
+                <img src="https://static.wixstatic.com/media/fb9c60_93f4fd143fc28ffc03b09294024ffa15.jpg/v1/fill/w_80,h_84,al_c,q_80,usm_0.66_1.00_0.01/fb9c60_93f4fd143fc28ffc03b09294024ffa15.webp"/>
+            </div>
+            Camp Management
+        </a>
+    </div>
+    <ul class="nav responsive-nav">
+        <li *ngIf="isMobileMenu()">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-dashboard"></i>
+				<p class="hidden-lg hidden-md">Dashboard</p>
+            </a>
+        </li>
+<!--         <li class="dropdown" *ngIf="isMobileMenu()">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-globe"></i>
+                    <b class="caret hidden-sm hidden-xs"></b>
+                    <span class="notification hidden-sm hidden-xs">5</span>
+					<p class="hidden-lg hidden-md">
+						5 Notifications
+						<b class="caret"></b>
+					</p>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Notification 1</a></li>
+                <li><a href="#">Notification 2</a></li>
+                <li><a href="#">Notification 3</a></li>
+                <li><a href="#">Notification 4</a></li>
+                <li><a href="#">Another notification</a></li>
+              </ul>
+        </li> -->
+  <!--       <li *ngIf="isMobileMenu()">
+           <a>
+                <i class="fa fa-search"></i>
+				<p class="hidden-lg hidden-md">Search</p>
+            </a>
+        </li> -->
+<!--         <li *ngIf="isMobileMenu()">
+           <a href="">
+               <p>Account</p>
+            </a>
+        </li>
+ -->
+<!--          <li class="dropdown" *ngIf="isMobileMenu()">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                    <p>
+    					Dropdown
+    					<b class="caret"></b>
+    				</p>
+
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+        </li>
+ -->
+         <li *ngIf="isMobileMenu()">
+            <a>
+                <p>Log out</p>
+            </a>
+        </li>
+        <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
+        <li>
+          <div class="card">
+            <div class="content">
+                <div class="form-group ">
+                    <!-- <label for="campNo">Select Camp</label> -->
+                    <select name="campNo" id="campNo" class="form-control" (change)="onSelect($event.target.value)">
+                      <option *ngFor="let camp of campList" [value]="camp.value" [selected]="camp.selected">{{camp.label}}</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="row"></div>
+          </div>
+        </li>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a *ngIf="menuItem.render" [routerLink]="[menuItem.path, selectedCamp]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
